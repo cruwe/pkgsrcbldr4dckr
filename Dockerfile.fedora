@@ -1,0 +1,32 @@
+FROM fedora:25
+
+LABEL maintainer "Christopher J. Ruwe <cjr@cruwe.de>"
+
+RUN \
+    dnf update -y && \
+    dnf install -y \
+        bzip2 \
+        file \
+        findutils \
+        gcc \
+        gcc-c++ \
+        git \
+        libudev-devel \
+        m4 \
+        ncurses-devel \
+        openssl-devel \
+        patch \
+        rsync \
+        tar \
+        wget \
+        which \
+        zlib \
+        zlib-devel
+
+ARG uid
+
+RUN \
+    groupadd -g ${uid} pbulk && \
+    useradd -u ${uid} -g ${uid} -c 'Pbulk User' -s /bin/bash -m pbulk
+
+COPY *.sh /root/
