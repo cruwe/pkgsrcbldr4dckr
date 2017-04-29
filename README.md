@@ -70,6 +70,9 @@ environment variable, sub-divided under $RELEASE/$OS/$OS_VERSION/All.
 
 ## Caveats
 
+The scripts cd to and clean the git directory passes as volume. *Any
+un-commited will be cleaned - deleted*.
+
 Although pbulk runs under the permissions of an unprivileged user, care to
 note that the scripts bootstrapping and calling run as (containered) root.
 Accordingly, when passing directories as volumes into docker, the containerd
